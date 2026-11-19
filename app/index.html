@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Vice — Cover Art Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <aside class="controls">
+    <h1>Neon Vice</h1>
+    <p class="tagline">An original poster-style cover art maker. Your photos stay on your machine — nothing is uploaded.</p>
+
+    <section>
+      <h2>1. Photos</h2>
+      <div id="drop-zone" class="drop-zone" role="button" tabindex="0">
+        Drop photos here, or click to choose files
+        <span class="drop-hint">You can add several — one per panel, or reuse one everywhere.</span>
+      </div>
+      <input id="photo-files" type="file" accept="image/*" multiple hidden>
+    </section>
+
+    <section>
+      <h2>2. Panel layout</h2>
+      <div id="layout-buttons" class="button-row"></div>
+    </section>
+
+    <section>
+      <h2>3. Selected panel</h2>
+      <p id="selected-label" class="selected-label">Panel 1</p>
+      <label>Photo in this panel
+        <select id="panel-photo"></select>
+      </label>
+      <label>Zoom
+        <input id="zoom" type="range" min="0.4" max="3" step="0.02" value="1">
+      </label>
+      <div class="button-row">
+        <button id="fit-toggle" type="button">Fill panel</button>
+        <button id="reset-panel" type="button">Reset framing</button>
+      </div>
+      <p class="hint">Tip: click a panel on the cover to select it, then drag on the cover to pan its photo.</p>
+    </section>
+
+    <section>
+      <h2>4. Colour grade</h2>
+      <div id="grade-buttons" class="button-row"></div>
+      <label>Grade intensity
+        <input id="grade-intensity" type="range" min="0" max="1" step="0.02" value="0.8">
+      </label>
+    </section>
+
+    <section>
+      <h2>5. Caption</h2>
+      <label>Main caption
+        <input id="caption" type="text" maxlength="40" value="Neon Vice">
+      </label>
+      <label>Subtitle line
+        <input id="subtitle" type="text" maxlength="60" value="Six stars. One city.">
+      </label>
+    </section>
+
+    <section>
+      <h2>6. Export</h2>
+      <label>Cover size
+        <select id="export-size"></select>
+      </label>
+      <button id="export" type="button" class="export-button">Download PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1350" aria-label="Cover preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/editor.js"></script>
+</body>
+</html>
